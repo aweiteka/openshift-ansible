@@ -11,13 +11,13 @@ graph:
     params:
       - name: image
         description: The OpenShift Ansible installer image
-        default: openshift/ansible-centos
+        default: aweiteka/openshift-ansible-centos
       - name: playbook
         description: Ansible playbook to run. Use relative path from openshift-ansible/playbooks.
         default: byo/config.yml
       - name: ssh_private_key
         description: Path to private key to use on this host.
-        default: /home/aweiteka/.ssh/id_rsa
+        default: .ssh/id_rsa
       - name: inventory_file
         description: Path to Ansible inventory file on this host.
         default: /etc/ansible/hosts
