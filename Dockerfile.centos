@@ -1,0 +1,15 @@
+FROM centos:centos7
+
+MAINTAINER Aaron Weitekamp <aweiteka@redhat.com>
+
+RUN echo -e "[epel]\nname=epel\nenabled=1\nbaseurl=https://dl.fedoraproject.org/pub/epel/7/x86_64/\ngpgcheck=0" > /etc/yum.repos.d/epel.repo
+
+RUN yum install -y net-tools bind-utils git ansible
+
+ADD ./  /opt/openshift-ansible/
+
+ENTRYPOINT ["/usr/bin/ansible-playbook"]
+
+CMD ["/opt/openshift-ansible/playbooks/byo/config.yml"]
+
+LABEL RUN="docker run -it --rm --privileged --net=host -v ~/.ssh:/root/.ssh -v /etc/ansible:/etc/ansible --name NAME -e NAME=NAME -e IMAGE=IMAGE IMAGE"
