@@ -1,0 +1,2 @@
+docker run -it --rm --privileged --net=host -v $ssh_private_key:/root/.ssh/id_rsa -v $inventory_file:/etc/ansible/hosts --name NAME -e NAME=NAME -e IMAGE=$image --entrypoint /usr/bin/ansible-playbook $image -i /etc/ansible/hosts /opt/openshift-ansible/playbooks/$playbook $ansible_opts
+
