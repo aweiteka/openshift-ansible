@@ -1,0 +1,25 @@
+[OSEv3:vars]
+openshift_deployment_type=origin
+is_containerized=true
+openshift_override_hostname_check=true
+openshift_master_cluster_hostname=127.0.0.1
+openshift_master_cluster_public_hostname=127.0.0.1.xip.io
+openshift_master_default_subdomain=127.0.0.1.xip.io
+#openshift_prometheus_operator_install=false
+
+[OSEv3:children]
+masters
+nodes
+
+[oo_first_master]
+127.0.0.1 ansible_connection=local
+
+[masters]
+127.0.0.1 ansible_connection=local
+
+[nodes]
+127.0.0.1 openshift_node_labels="{'region': 'infra'}"
+
+[etcd]
+127.0.0.1
+
